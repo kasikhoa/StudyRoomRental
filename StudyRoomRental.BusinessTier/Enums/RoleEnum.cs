@@ -8,7 +8,9 @@ namespace StudyRoomRental.BusinessTier.Enums
 {
     public enum RoleEnum
     {
-        Admin,
-        
+        Admin, 
+        Landlord,
+        Renter,
+
     }
 }

@@ -10,9 +10,9 @@ namespace StudyRoomRental.DataTier.Models
         public int RoomId { get; set; }
         public DateTime StartedTime { get; set; }
         public DateTime EndedTime { get; set; }
-        public string Status { get; set; } = null!;
+        public string Status { get; set; }
 
-        public virtual Order Order { get; set; } = null!;
-        public virtual Room Room { get; set; } = null!;
+        public virtual Order Order { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

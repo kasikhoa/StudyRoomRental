@@ -1,5 +1,7 @@
 ﻿using StudyRoomRental.API.Services.Interfaces;
+using StudyRoomRental.BusinessTier.Constants;
 using StudyRoomRental.BusinessTier.Enums;
+using StudyRoomRental.BusinessTier.Payload.Account;
 using StudyRoomRental.BusinessTier.Payload.Login;
 using StudyRoomRental.BusinessTier.Utils;
 using StudyRoomRental.DataTier.Models;
@@ -38,5 +40,26 @@ namespace StudyRoomRental.API.Services.Implements
             };
             return loginResponse;
         }
+
+        public async Task<GetAccountResponse> CreateNewAccount(AccountRequest request)
+        {
+            Account account = await _unitOfWork.GetRepository<Account>()
+              .SingleOrDefaultAsync(predicate: x => x.Email.Equals(request.Email));
+            if (account != null) throw new BadHttpRequestException(MessageConstant.Account.AccountExisted);
+
+            account = new Account()
+            {
+                Email = request.Email,
+                Password = PasswordUtil.HashPassword(request.Password),
+                Role = RoleEnum.Renter.GetDescriptionFromEnum(),
+                Status = AccountStatus.Active.GetDescriptionFromEnum(),
+            };
+
+            await _unitOfWork.GetRepository<Account>().InsertAsync(account);
+            bool isSuccessful = await _unitOfWork.CommitAsync() > 0;
+            if (!isSuccessful) throw new BadHttpRequestException(MessageConstant.Account.CreateAccountFailed);
+            return new GetAccountResponse(account.Id, account.Email, account.Password, EnumUtil.ParseEnum<RoleEnum>(account.Role), EnumUtil.ParseEnum<AccountStatus>(account.Status));
+        }
+
     }
 }

@@ -14,13 +14,13 @@ namespace StudyRoomRental.DataTier.Models
         }
 
         public int Id { get; set; }
-        public string Email { get; set; } = null!;
-        public string Password { get; set; } = null!;
-        public string Phone { get; set; } = null!;
-        public string DateOfBirth { get; set; } = null!;
-        public string Gender { get; set; } = null!;
-        public string Role { get; set; } = null!;
-        public string Status { get; set; } = null!;
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Phone { get; set; }
+        public string DateOfBirth { get; set; }
+        public string Gender { get; set; }
+        public string Role { get; set; }
+        public string Status { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

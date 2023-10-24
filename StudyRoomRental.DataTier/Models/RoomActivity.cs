@@ -10,10 +10,10 @@ namespace StudyRoomRental.DataTier.Models
         public int UserId { get; set; }
         public DateTime StartedTime { get; set; }
         public DateTime? EndedTime { get; set; }
-        public string? Description { get; set; }
-        public string Action { get; set; } = null!;
+        public string Description { get; set; }
+        public string Action { get; set; }
 
-        public virtual Room Room { get; set; } = null!;
-        public virtual Account User { get; set; } = null!;
+        public virtual Room Room { get; set; }
+        public virtual Account User { get; set; }
     }
 }

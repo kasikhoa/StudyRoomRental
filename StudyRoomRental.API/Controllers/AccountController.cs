@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using StudyRoomRental.API.Services.Interfaces;
 using StudyRoomRental.BusinessTier.Constants;
 using StudyRoomRental.BusinessTier.Enums;
+using StudyRoomRental.BusinessTier.Payload.Account;
 using StudyRoomRental.BusinessTier.Payload.Login;
+using StudyRoomRental.BusinessTier.Validators;
 
 namespace StudyRoomRental.API.Controllers
 {
@@ -28,6 +30,16 @@ namespace StudyRoomRental.API.Controllers
             if (loginResponse.Status == AccountStatus.Deactive)
                 throw new BadHttpRequestException(MessageConstant.LoginMessage.DeactivatedAccount);
             return Ok(loginResponse);
+        }
+
+       // [CustomAuthorize(RoleEnum.Admin)]
+        [HttpPost(ApiEndPointConstant.Account.AccountsEndpoint)]
+        [ProducesResponseType(typeof(AccountResponse), StatusCodes.Status200OK)]
+        [ProducesErrorResponseType(typeof(UnauthorizedObjectResult))]
+        public async Task<IActionResult> CreateAccount(AccountRequest createNewAccountRequest)
+        {
+            var response = await _accountService.CreateNewAccount(createNewAccountRequest);
+            return Ok(response);
         }
     }
 }
