@@ -1,0 +1,15 @@
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.BusinessTier.deps.json
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.BusinessTier.dll
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.BusinessTier.pdb
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.DataTier.dll
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.DataTier.pdb
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.csproj.AssemblyReference.cache
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.GeneratedMSBuildEditorConfig.editorconfig
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.AssemblyInfoInputs.cache
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.AssemblyInfo.cs
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.csproj.CoreCompileInputs.cache
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.csproj.CopyComplete
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.dll
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\refint\StudyRoomRental.BusinessTier.dll
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.pdb
+D:\FU\PRM392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\ref\StudyRoomRental.BusinessTier.dll
