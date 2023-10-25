@@ -1999,24 +1999,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anh12\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anh12\\OneDrive\\Máy tính\\Chuyên ngành 7\\PRM392\\Group Project\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
+      "projectUniqueName": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
       "projectName": "StudyRoomRental.BusinessTier",
-      "projectPath": "C:\\Users\\anh12\\OneDrive\\Máy tính\\Chuyên ngành 7\\PRM392\\Group Project\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
-      "packagesPath": "C:\\Users\\anh12\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anh12\\OneDrive\\Máy tính\\Chuyên ngành 7\\PRM392\\Group Project\\StudyRoomRental.BusinessTier\\obj\\",
+      "projectPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\anh12\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2030,8 +2025,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\anh12\\OneDrive\\Máy tính\\Chuyên ngành 7\\PRM392\\Group Project\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj": {
-              "projectPath": "C:\\Users\\anh12\\OneDrive\\Máy tính\\Chuyên ngành 7\\PRM392\\Group Project\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj"
+            "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj": {
+              "projectPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj"
             }
           }
         }
@@ -2067,7 +2062,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

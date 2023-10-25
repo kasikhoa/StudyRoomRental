@@ -21,6 +21,7 @@ public class JwtUtil
         var credentials = new SigningCredentials(secrectKey, SecurityAlgorithms.HmacSha256Signature);
         List<Claim> claims = new List<Claim>()
         {
+            new Claim(JwtRegisteredClaimNames.Sub, account.Email),
             new Claim(ClaimTypes.Role, account.Role),
         };
         var expires = DateTime.Now.AddDays(10);

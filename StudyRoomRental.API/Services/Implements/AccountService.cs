@@ -52,7 +52,7 @@ namespace StudyRoomRental.API.Services.Implements
                 Email = request.Email,
                 Password = PasswordUtil.HashPassword(request.Password),
                 Role = RoleEnum.Renter.GetDescriptionFromEnum(),
-                Status = AccountStatus.Active.GetDescriptionFromEnum(),
+                Status = AccountStatus.Activate.GetDescriptionFromEnum(),
             };
 
             await _unitOfWork.GetRepository<Account>().InsertAsync(account);
