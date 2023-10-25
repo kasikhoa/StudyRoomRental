@@ -16,22 +16,22 @@ namespace StudyRoomRental.DataTier.Models
         {
         }
 
-        public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderItem> OrderItems { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<RoomActivity> RoomActivities { get; set; }
-        public virtual DbSet<RoomType> RoomTypes { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; } = null!;
+        public virtual DbSet<Feedback> Feedbacks { get; set; } = null!;
+        public virtual DbSet<Order> Orders { get; set; } = null!;
+        public virtual DbSet<OrderItem> OrderItems { get; set; } = null!;
+        public virtual DbSet<Payment> Payments { get; set; } = null!;
+        public virtual DbSet<Room> Rooms { get; set; } = null!;
+        public virtual DbSet<RoomSchedule> RoomSchedules { get; set; } = null!;
+        public virtual DbSet<RoomType> RoomTypes { get; set; } = null!;
+        public virtual DbSet<Transaction> Transactions { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=StudyRoomRental;Persist Security Info=True;User ID=sa;Password=12345");
+                optionsBuilder.UseSqlServer("Data Source=Khoa\\SQLEXPRESS;Initial Catalog=StudyRoomRental;\nPersist Security Info=True;User ID=sa;Password=12345");
             }
         }
 
@@ -43,29 +43,23 @@ namespace StudyRoomRental.DataTier.Models
 
                 entity.Property(e => e.DateOfBirth).HasMaxLength(50);
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Email).HasMaxLength(50);
 
                 entity.Property(e => e.Gender)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Password).HasMaxLength(50);
 
                 entity.Property(e => e.Phone)
                     .HasMaxLength(10)
                     .IsFixedLength();
 
                 entity.Property(e => e.Role)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Status)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });
@@ -77,21 +71,20 @@ namespace StudyRoomRental.DataTier.Models
                 entity.Property(e => e.Content).HasMaxLength(255);
 
                 entity.Property(e => e.Rating)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Feedbacks)
+                    .HasForeignKey(d => d.AccountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Feedback__UserId__2A4B4B5E");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.Feedbacks)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Feedback__OrderI__59063A47");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Feedbacks)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Feedback__UserId__59FA5E80");
+                    .HasConstraintName("FK__Feedback__OrderI__29572725");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -101,15 +94,14 @@ namespace StudyRoomRental.DataTier.Models
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Status)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.User)
+                entity.HasOne(d => d.Account)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.AccountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__UserId__5AEE82B9");
+                    .HasConstraintName("FK__Order__UserId__267ABA7A");
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -120,22 +112,17 @@ namespace StudyRoomRental.DataTier.Models
 
                 entity.Property(e => e.StartedTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderItem__Order__5BE2A6F2");
+                    .HasConstraintName("FK__OrderItem__Order__32E0915F");
 
                 entity.HasOne(d => d.Room)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.RoomId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderItem__RoomI__5CD6CB2B");
+                    .HasConstraintName("FK_OrderItem_Room");
             });
 
             modelBuilder.Entity<Payment>(entity =>
@@ -145,12 +132,10 @@ namespace StudyRoomRental.DataTier.Models
                 entity.Property(e => e.Description).HasMaxLength(255);
 
                 entity.Property(e => e.PaymentType)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Status)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -158,78 +143,70 @@ namespace StudyRoomRental.DataTier.Models
                     .WithMany(p => p.Payments)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Payment__OrderId__5DCAEF64");
+                    .HasConstraintName("FK__Payment__OrderId__398D8EEE");
             });
 
             modelBuilder.Entity<Room>(entity =>
             {
                 entity.ToTable("Room");
 
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Address).HasMaxLength(50);
 
                 entity.Property(e => e.Description).HasMaxLength(255);
 
-                entity.Property(e => e.Image)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Facilities).HasMaxLength(50);
+
+                entity.Property(e => e.Image).HasMaxLength(50);
+
+                entity.Property(e => e.Name).HasMaxLength(50);
 
                 entity.Property(e => e.Status)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Type)
+                entity.HasOne(d => d.Account)
                     .WithMany(p => p.Rooms)
-                    .HasForeignKey(d => d.TypeId)
+                    .HasForeignKey(d => d.AccountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Room__TypeId__5EBF139D");
+                    .HasConstraintName("FK__Room__UserId__2F10007B");
 
-                entity.HasOne(d => d.User)
+                entity.HasOne(d => d.RoomType)
                     .WithMany(p => p.Rooms)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.RoomTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Room__UserId__5FB337D6");
+                    .HasConstraintName("FK__Room__TypeId__300424B4");
             });
 
-            modelBuilder.Entity<RoomActivity>(entity =>
+            modelBuilder.Entity<RoomSchedule>(entity =>
             {
-                entity.ToTable("RoomActivity");
+                entity.ToTable("RoomSchedule");
 
-                entity.Property(e => e.Action)
-                    .IsRequired()
+                entity.Property(e => e.EndTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Note).HasMaxLength(255);
+
+                entity.Property(e => e.StartTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Status)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Description).HasMaxLength(255);
-
-                entity.Property(e => e.EndedTime).HasColumnType("datetime");
-
-                entity.Property(e => e.StartedTime).HasColumnType("datetime");
-
                 entity.HasOne(d => d.Room)
-                    .WithMany(p => p.RoomActivities)
+                    .WithMany(p => p.RoomSchedules)
                     .HasForeignKey(d => d.RoomId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__RoomActiv__RoomI__60A75C0F");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.RoomActivities)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__RoomActiv__UserI__619B8048");
+                    .HasConstraintName("FK__RoomSched__RoomI__36B12243");
             });
 
             modelBuilder.Entity<RoomType>(entity =>
             {
                 entity.ToTable("RoomType");
 
-                entity.Property(e => e.Area)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Area).HasMaxLength(50);
 
                 entity.Property(e => e.Description).HasMaxLength(255);
+
+                entity.Property(e => e.Name).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Transaction>(entity =>
@@ -239,7 +216,6 @@ namespace StudyRoomRental.DataTier.Models
                 entity.Property(e => e.Note).HasMaxLength(255);
 
                 entity.Property(e => e.Status)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -247,7 +223,7 @@ namespace StudyRoomRental.DataTier.Models
                     .WithMany(p => p.Transactions)
                     .HasForeignKey(d => d.PaymentId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Transacti__Payme__628FA481");
+                    .HasConstraintName("FK__Transacti__Payme__3C69FB99");
             });
 
             OnModelCreatingPartial(modelBuilder);

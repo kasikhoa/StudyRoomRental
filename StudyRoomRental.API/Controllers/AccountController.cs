@@ -28,7 +28,7 @@ namespace StudyRoomRental.API.Controllers
             var loginResponse = await _accountService.Login(loginRequest);
             if (loginResponse == null)
                 throw new BadHttpRequestException(MessageConstant.LoginMessage.InvalidUsernameOrPassword);
-            if (loginResponse.Status == AccountStatus.Deactive)
+            if (loginResponse.Status == AccountStatus.Deactivate)
                 throw new BadHttpRequestException(MessageConstant.LoginMessage.DeactivatedAccount);
             return Ok(loginResponse);
         }

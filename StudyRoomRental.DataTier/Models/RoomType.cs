@@ -11,8 +11,9 @@ namespace StudyRoomRental.DataTier.Models
         }
 
         public int Id { get; set; }
-        public string Description { get; set; }
-        public string Area { get; set; }
+        public string Name { get; set; } = null!;
+        public string? Description { get; set; }
+        public string Area { get; set; } = null!;
         public int MaxCapacity { get; set; }
 
         public virtual ICollection<Room> Rooms { get; set; }
