@@ -18,6 +18,7 @@ public static class ApiEndPointConstant
     {
         public const string AccountsEndpoint = ApiEndpoint + "/accounts";
         public const string AccountEndpoint = AccountsEndpoint + "/{id}";
+        public const string AccountUpdateEndpoint = AccountsEndpoint + "/roles";
     }
 
     public static class RoomType

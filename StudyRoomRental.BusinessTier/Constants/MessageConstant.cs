@@ -25,8 +25,10 @@ public static class MessageConstant
         public const string UpdateAccountStatusFailedMessage = "Vô hiệu hóa tài khoản thất bại";
         public const string UpdateAccountStatusSuccessfulMessage = "Vô hiệu hóa tài khoản thành công";
         public const string EmptyAccountIdMessage = "Account Id không hợp lệ";
-
+     
         public const string StaffNotFoundMessage = "Không tìm thấy nhân viên";
+        public const string UpdateAccountRoleFailedMessage = "Cập nhật vai trò người cho thuê thất bại";
+        public const string UpdateAccountRoleSuccessfulMessage = "Cập nhật vai trò người cho thuê thành công";
     }
 
     public static class RoomType
