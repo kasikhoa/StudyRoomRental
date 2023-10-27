@@ -18,6 +18,7 @@ namespace StudyRoomRental.DataTier.Models
         public int RoomQuantity { get; set; }
         public double TotalAmount { get; set; }
         public string Status { get; set; } = null!;
+        public DateTime? CompletedTime { get; set; }
 
         public virtual Account Account { get; set; } = null!;
         public virtual ICollection<Feedback> Feedbacks { get; set; }

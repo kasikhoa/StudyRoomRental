@@ -56,7 +56,7 @@ namespace StudyRoomRental.API.Services.Implements
 
             if (roomId.HasValue)
             {
-                filterQuery = filterQuery.AndAlso(x => x.RoomId == roomId);
+                filterQuery = filterQuery.AndAlso(x => x.RoomId.Equals(roomId));
             }
 
             if (startTime.HasValue)

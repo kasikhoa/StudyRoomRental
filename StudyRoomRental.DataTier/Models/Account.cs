@@ -7,7 +7,6 @@ namespace StudyRoomRental.DataTier.Models
     {
         public Account()
         {
-            Feedbacks = new HashSet<Feedback>();
             Orders = new HashSet<Order>();
             Rooms = new HashSet<Room>();
         }
@@ -21,7 +20,6 @@ namespace StudyRoomRental.DataTier.Models
         public string Role { get; set; } = null!;
         public string Status { get; set; } = null!;
 
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
     }

@@ -31,6 +31,18 @@ public static class MessageConstant
         public const string UpdateAccountRoleSuccessfulMessage = "Cập nhật vai trò người cho thuê thành công";
     }
 
+    public static class Order
+    {
+        public const string EmptyIdMessage = "Id không hợp lệ";
+        public const string OrderNotFoundMessage = "Order không tồn tại trong hệ thống";
+        public const string UpdateStatusFailedMessage = "Cập nhật trạng thái thất bại";
+        public const string CompletedStatusMessage = "Order đã hoàn thành";
+        public const string CannotChangeToStatusMessage = "Không thể thay đổi trạng thái Order đã hoàn thành hoặc đã hủy";
+        public const string UpdateStatusSuccessMessage = "Cập nhật trạng thái thành công";
+        public const string FeedbackFailedMessage = "Feedback thất bại";
+
+    }
+
     public static class RoomType
     {
         public const string DuplicatedNameMessage = "Loại phòng đã tồn tại";

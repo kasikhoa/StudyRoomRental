@@ -7,11 +7,9 @@ namespace StudyRoomRental.DataTier.Models
     {
         public int Id { get; set; }
         public Guid OrderId { get; set; }
-        public int AccountId { get; set; }
-        public string Rating { get; set; } = null!;
+        public double Rating { get; set; }
         public string? Content { get; set; }
 
-        public virtual Account Account { get; set; } = null!;
         public virtual Order Order { get; set; } = null!;
     }
 }

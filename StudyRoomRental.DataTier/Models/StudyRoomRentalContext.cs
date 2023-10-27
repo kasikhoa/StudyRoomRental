@@ -69,16 +69,6 @@ namespace StudyRoomRental.DataTier.Models
 
                 entity.Property(e => e.Content).HasMaxLength(255);
 
-                entity.Property(e => e.Rating)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Feedbacks)
-                    .HasForeignKey(d => d.AccountId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Feedback__UserId__2A4B4B5E");
-
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.Feedbacks)
                     .HasForeignKey(d => d.OrderId)
@@ -91,6 +81,8 @@ namespace StudyRoomRental.DataTier.Models
                 entity.ToTable("Order");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.CompletedTime).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
 
