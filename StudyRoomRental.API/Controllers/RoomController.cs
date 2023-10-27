@@ -29,9 +29,11 @@ namespace StudyRoomRental.API.Controllers
         [HttpGet(ApiEndPointConstant.Room.RoomsEndPoint)]
         [ProducesResponseType(typeof(RoomResponse), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(UnauthorizedObjectResult))]
-        public async Task<IActionResult> ViewAllRooms(int? accountId, int? roomTypeId, string? name, RoomStatus? status, int page, int size)
+        public async Task<IActionResult> ViewAllRooms(int? accountId, string? name, string? address, 
+            RoomStatus? status, double? minPrice, double? maxPrice, int? minCapacity, int page, int size)
         {
-            var response = await _roomService.ViewAllRooms(accountId, roomTypeId, name, status, page, size);
+            var response = await _roomService.ViewAllRooms(accountId, name, address, status, minPrice, maxPrice,
+                minCapacity, page, size);
             return Ok(response);
         }
 
@@ -54,7 +56,6 @@ namespace StudyRoomRental.API.Controllers
         }
 
         [HttpDelete(ApiEndPointConstant.Room.RoomEndPoint)]
-        [ProducesResponseType(typeof(RoomResponse), StatusCodes.Status200OK)]
         [ProducesErrorResponseType(typeof(UnauthorizedObjectResult))]
         public async Task<IActionResult> UpdateRoomStatus(int id)
         {

@@ -11,7 +11,7 @@ namespace StudyRoomRental.DataTier.Models
         }
 
         public int Id { get; set; }
-        public int OrderId { get; set; }
+        public Guid OrderId { get; set; }
         public string? Description { get; set; }
         public string PaymentType { get; set; } = null!;
         public string Status { get; set; } = null!;

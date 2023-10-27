@@ -1,4 +1,4 @@
-﻿using StudyRoomRental.BusinessTier.Enums;
+﻿    using StudyRoomRental.BusinessTier.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +13,11 @@ namespace StudyRoomRental.BusinessTier.Payload.Room
         public string? Address { get; set; }
         public string? Facilities { get; set; }
         public string? Description { get; set; }
+        public string? Area { get; set; }
+        public int Capacity { get; set; }
         public string? Image { get; set; }
         public double CostPrice { get; set; }
-        public RoomStatus? RoomStatus { get; set; }
+        public RoomStatus? Status { get; set; }
 
         public void TrimString()
         {

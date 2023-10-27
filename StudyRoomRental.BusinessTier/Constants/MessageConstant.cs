@@ -50,7 +50,11 @@ public static class MessageConstant
 
     public static class RoomSchedule
     {
+        public const string EmptyIdMessage = "Id không hợp lệ";
         public const string CreateFailedMessage = "Tạo lịch thuê phòng thất bại";
+        public const string NotFoundMessage = "Room Schedule không có trong hệ thống";
+        public const string UpdateFailedMessage = "Cập nhật Room Schedule thất bại";
+        public const string ScheduleNotMatchedMessage = "Thời gian cho thuê không phù hợp";
     }
 
 

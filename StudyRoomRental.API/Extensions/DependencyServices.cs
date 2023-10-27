@@ -26,9 +26,9 @@ namespace StudyRoomRental.API.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<IRoomTypeService, RoomTypeService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IRoomScheduleService, RoomScheduleService>();
+            services.AddScoped<IOrderService, OrderService>();
             return services;
         }
 

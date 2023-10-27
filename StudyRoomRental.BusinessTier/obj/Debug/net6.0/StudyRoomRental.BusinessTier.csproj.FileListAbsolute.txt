@@ -28,3 +28,18 @@ D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\n
 D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\refint\StudyRoomRental.BusinessTier.dll
 D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.pdb
 D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\ref\StudyRoomRental.BusinessTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.BusinessTier.deps.json
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.BusinessTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.BusinessTier.pdb
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.DataTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\bin\Debug\net6.0\StudyRoomRental.DataTier.pdb
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.csproj.AssemblyReference.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.GeneratedMSBuildEditorConfig.editorconfig
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.AssemblyInfoInputs.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.AssemblyInfo.cs
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.csproj.CoreCompileInputs.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.csproj.CopyComplete
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\refint\StudyRoomRental.BusinessTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\StudyRoomRental.BusinessTier.pdb
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.BusinessTier\obj\Debug\net6.0\ref\StudyRoomRental.BusinessTier.dll

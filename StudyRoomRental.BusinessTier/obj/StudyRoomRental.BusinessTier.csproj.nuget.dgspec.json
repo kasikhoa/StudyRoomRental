@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj": {}
+    "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj": {}
   },
   "projects": {
-    "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj": {
+    "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
+        "projectUniqueName": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
         "projectName": "StudyRoomRental.BusinessTier",
-        "projectPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
+        "projectPath": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.BusinessTier\\StudyRoomRental.BusinessTier.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.BusinessTier\\obj\\",
+        "outputPath": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.BusinessTier\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj": {
-                "projectPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj"
+              "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj": {
+                "projectPath": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj": {
+    "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj",
+        "projectUniqueName": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj",
         "projectName": "StudyRoomRental.DataTier",
-        "projectPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj",
+        "projectPath": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.DataTier\\StudyRoomRental.DataTier.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\FU\\SWD392_Dental Lab\\StudyRoomRental\\StudyRoomRental.DataTier\\obj\\",
+        "outputPath": "D:\\FU\\SWD392\\StudyRoomRental\\StudyRoomRental.DataTier\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

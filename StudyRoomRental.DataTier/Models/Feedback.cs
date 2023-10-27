@@ -6,7 +6,7 @@ namespace StudyRoomRental.DataTier.Models
     public partial class Feedback
     {
         public int Id { get; set; }
-        public int OrderId { get; set; }
+        public Guid OrderId { get; set; }
         public int AccountId { get; set; }
         public string Rating { get; set; } = null!;
         public string? Content { get; set; }

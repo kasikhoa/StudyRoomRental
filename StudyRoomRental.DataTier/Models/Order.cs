@@ -12,9 +12,10 @@ namespace StudyRoomRental.DataTier.Models
             Payments = new HashSet<Payment>();
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int AccountId { get; set; }
         public DateTime CreatedTime { get; set; }
+        public int RoomQuantity { get; set; }
         public double TotalAmount { get; set; }
         public string Status { get; set; } = null!;
 

@@ -31,22 +31,18 @@ namespace StudyRoomRental.API.Services.Implements
             if (!account.Role.Equals(RoleEnum.Landlord.GetDescriptionFromEnum()))
                 throw new BadHttpRequestException(MessageConstant.Account.RenterRoleMessage);
 
-            RoomType roomType = await _unitOfWork.GetRepository<RoomType>().SingleOrDefaultAsync(
-                predicate: x => x.Id.Equals(request.RoomTypeId));
-            if (roomType == null) throw new BadHttpRequestException(MessageConstant.RoomType.NotFoundMessage);
-
-
             Room newRoom = new Room()
             {
                 AccountId = request.AccountId,
-                RoomTypeId = request.RoomTypeId,
                 Name = request.Name,
                 Address = request.Address,
                 Facilities = request.Facilities,
                 Description = request.Description,
+                Area = request.Area,
+                Capacity = request.Capacity,
                 Image = request.Image,
                 CostPrice = request.CostPrice,
-                Status = RoomStatus.Available.GetDescriptionFromEnum(),
+                Status = RoomStatus.Active.GetDescriptionFromEnum(),
             };
             await _unitOfWork.GetRepository<Room>().InsertAsync(newRoom);
             bool isSuccessful = await _unitOfWork.CommitAsync() > 0;
@@ -55,18 +51,20 @@ namespace StudyRoomRental.API.Services.Implements
             {
                 Id = newRoom.Id,
                 Account = account.Email,
-                RoomType = roomType.Name,
                 Name = newRoom.Name,
                 Address = newRoom.Address,
                 Facilities = newRoom.Facilities,
                 Description = newRoom.Description,
+                Area = newRoom.Area,
+                Capacity = newRoom.Capacity,
                 Image = newRoom.Image,
                 CostPrice = newRoom.CostPrice,
                 Status = EnumUtil.ParseEnum<RoomStatus>(newRoom.Status),
             };
         }
 
-        private Expression<Func<Room, bool>> BuildGetRoomsQuery(int? accountId, int? roomTypeId, string? name, RoomStatus? status)
+        private Expression<Func<Room, bool>> BuildGetRoomsQuery(int? accountId, string? name, string? address,
+            RoomStatus? status, double? minPrice, double? maxPrice, int? minCapacity)
         {
             Expression<Func<Room, bool>> filterQuery = x => true;
 
@@ -74,14 +72,13 @@ namespace StudyRoomRental.API.Services.Implements
             {
                 filterQuery = filterQuery.AndAlso(x => x.AccountId.Equals(accountId));
             }
-
-            if (roomTypeId.HasValue)
-            {
-                filterQuery = filterQuery.AndAlso(x => x.RoomTypeId.Equals(roomTypeId));
-            }
             if (!string.IsNullOrEmpty(name))
             {
                 filterQuery = filterQuery.AndAlso(x => x.Name.Contains(name));
+            }
+            if (!string.IsNullOrEmpty(address))
+            {
+                filterQuery = filterQuery.AndAlso(x => x.Address.Contains(address));
             }
 
             if (status != null)
@@ -89,10 +86,24 @@ namespace StudyRoomRental.API.Services.Implements
                 filterQuery = filterQuery.AndAlso(x => x.Status.Equals(status.GetDescriptionFromEnum()));
             }
 
+            if (minPrice.HasValue)
+            {
+                filterQuery = filterQuery.AndAlso(x => x.CostPrice >= minPrice.Value);
+            }
+            if (maxPrice.HasValue)
+            {
+                filterQuery = filterQuery.AndAlso(x => x.CostPrice <= maxPrice.Value);
+            }
+            if (minCapacity.HasValue)
+            {
+                filterQuery = filterQuery.AndAlso(x => x.Capacity >= minCapacity.Value);
+            }
+
             return filterQuery;
         }
 
-        public async Task<IPaginate<RoomResponse>> ViewAllRooms(int? accountId, int? roomTypeId, string? name, RoomStatus? status, int page, int size)
+        public async Task<IPaginate<RoomResponse>> ViewAllRooms(int? accountId, string? name, string? address, 
+            RoomStatus? status, double? minPrice, double? maxPrice, int? minCapacity, int page, int size)
         {
             page = (page == 0) ? 1 : page;
             size = (size == 0) ? 10 : size;
@@ -102,16 +113,17 @@ namespace StudyRoomRental.API.Services.Implements
                 {
                     Id = x.Id,
                     Account = x.Account.Email,
-                    RoomType = x.RoomType.Name,
                     Name = x.Name,
                     Address= x.Address,
                     Facilities= x.Facilities,
                     Description = x.Description,
+                    Area = x.Area,
+                    Capacity = x.Capacity,
                     Image = x.Image,
                     CostPrice= x.CostPrice,
                     Status = EnumUtil.ParseEnum<RoomStatus>(x.Status)
                 },
-                predicate: BuildGetRoomsQuery(accountId, roomTypeId, name, status),
+                predicate: BuildGetRoomsQuery(accountId, name, address, status, minPrice, maxPrice, minCapacity),
                 page: page,
                 size: size
                 );
@@ -123,18 +135,19 @@ namespace StudyRoomRental.API.Services.Implements
             if (id < 1) throw new BadHttpRequestException(MessageConstant.Room.EmptyIdMessage);
             Room room = await _unitOfWork.GetRepository<Room>().SingleOrDefaultAsync(
                 predicate: x => x.Id.Equals(id),
-                include: x => x.Include(x => x.Account).Include(x => x.RoomType)
+                include: x => x.Include(x => x.Account)
                 );
             if (room == null) throw new BadHttpRequestException(MessageConstant.Room.NotFoundMessage);
             return new RoomResponse()
             {
                 Id = room.Id,
                 Account = room.Account.Email,
-                RoomType = room.RoomType.Name,
                 Name = room.Name,
                 Address = room.Address,
                 Facilities = room.Facilities,
                 Description = room.Description,
+                Area = room.Area,
+                Capacity = room.Capacity,
                 Image = room.Image,
                 CostPrice = room.CostPrice,
                 Status = EnumUtil.ParseEnum<RoomStatus>(room.Status)
@@ -146,7 +159,7 @@ namespace StudyRoomRental.API.Services.Implements
             if (id < 1) throw new BadHttpRequestException(MessageConstant.Room.EmptyIdMessage);
             Room updateRoom = await _unitOfWork.GetRepository<Room>().SingleOrDefaultAsync(
                 predicate: x => x.Id.Equals(id),
-                include: x => x.Include(x => x.Account).Include(x => x.RoomType)
+                include: x => x.Include(x => x.Account)
                 );
             if (updateRoom == null) throw new BadHttpRequestException(MessageConstant.Room.NotFoundMessage);
             request.TrimString();
@@ -156,7 +169,7 @@ namespace StudyRoomRental.API.Services.Implements
             updateRoom.Description = string.IsNullOrEmpty(request.Description) ? updateRoom.Description : request.Description;
             updateRoom.Image = string.IsNullOrEmpty(request.Image) ? updateRoom.Image : request.Image;
             updateRoom.CostPrice = request.CostPrice <= 0 ? updateRoom.CostPrice : request.CostPrice;
-            updateRoom.Status = request.RoomStatus.GetDescriptionFromEnum();
+            updateRoom.Status = request.Status.GetDescriptionFromEnum();
 
             _unitOfWork.GetRepository<Room>().UpdateAsync(updateRoom);
             bool isSuccessful = await _unitOfWork.CommitAsync() > 0;
@@ -165,11 +178,12 @@ namespace StudyRoomRental.API.Services.Implements
             {
                 Id = updateRoom.Id,
                 Account = updateRoom.Account.Email,
-                RoomType = updateRoom.RoomType.Name,
                 Name = updateRoom.Name,
                 Address = updateRoom.Address,
                 Facilities = updateRoom.Facilities,
                 Description = updateRoom.Description,
+                Area = updateRoom.Area,
+                Capacity = updateRoom.Capacity,
                 Image = updateRoom.Image,
                 CostPrice = updateRoom.CostPrice,
                 Status = EnumUtil.ParseEnum<RoomStatus>(updateRoom.Status)
@@ -185,7 +199,7 @@ namespace StudyRoomRental.API.Services.Implements
                 );
             if (room == null) throw new BadHttpRequestException(MessageConstant.Room.NotFoundMessage);
 
-            room.Status = RoomStatus.Unavailable.GetDescriptionFromEnum();
+            room.Status = RoomStatus.Inactive.GetDescriptionFromEnum();
             _unitOfWork.GetRepository<Room>().UpdateAsync(room);
             bool isSuccessful = await _unitOfWork.CommitAsync() > 0;
             return isSuccessful;

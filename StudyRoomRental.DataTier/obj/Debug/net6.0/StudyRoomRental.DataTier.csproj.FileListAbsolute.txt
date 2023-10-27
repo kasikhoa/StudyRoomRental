@@ -12,3 +12,17 @@ D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.
 D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.pdb
 D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.genruntimeconfig.cache
 D:\FU\SWD392_Dental Lab\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\ref\StudyRoomRental.DataTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\bin\Debug\net6.0\StudyRoomRental.DataTier.deps.json
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\bin\Debug\net6.0\StudyRoomRental.DataTier.runtimeconfig.json
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\bin\Debug\net6.0\StudyRoomRental.DataTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\bin\Debug\net6.0\StudyRoomRental.DataTier.pdb
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.csproj.AssemblyReference.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.GeneratedMSBuildEditorConfig.editorconfig
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.AssemblyInfoInputs.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.AssemblyInfo.cs
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.csproj.CoreCompileInputs.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\refint\StudyRoomRental.DataTier.dll
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.pdb
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\StudyRoomRental.DataTier.genruntimeconfig.cache
+D:\FU\SWD392\StudyRoomRental\StudyRoomRental.DataTier\obj\Debug\net6.0\ref\StudyRoomRental.DataTier.dll

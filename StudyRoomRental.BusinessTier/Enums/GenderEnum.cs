@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace StudyRoomRental.BusinessTier.Enums
 {
-    public enum RoomStatus
+    public enum GenderEnum
     {
-        Active,
-        Inactive
+        Male,
+        Female,
+        Other
 
     }
 }

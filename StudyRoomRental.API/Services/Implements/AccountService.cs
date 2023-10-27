@@ -53,7 +53,7 @@ namespace StudyRoomRental.API.Services.Implements
             {
                 Email = request.Email,
                 Password = PasswordUtil.HashPassword(request.Password),
-                Role = RoleEnum.Renter.GetDescriptionFromEnum(),
+                Role = request.Role.GetDescriptionFromEnum(),
                 Status = AccountStatus.Activate.GetDescriptionFromEnum(),
             };
 
@@ -74,7 +74,7 @@ namespace StudyRoomRental.API.Services.Implements
             updateAccount.Password = string.IsNullOrEmpty(updateAccountRequest.Password) ? updateAccount.Password : PasswordUtil.HashPassword(updateAccountRequest.Password.Trim());
             updateAccount.Phone = string.IsNullOrEmpty(updateAccountRequest.Phone) ? updateAccount.Phone : updateAccountRequest.Phone.Trim();
             updateAccount.DateOfBirth = string.IsNullOrEmpty(updateAccountRequest.DateOfBirth) ? updateAccount.DateOfBirth : updateAccountRequest.DateOfBirth.Trim();
-            updateAccount.Gender = string.IsNullOrEmpty(updateAccountRequest.Gender) ? updateAccount.Gender : updateAccountRequest.Gender.Trim();
+            updateAccount.Gender = updateAccountRequest.Gender.GetDescriptionFromEnum();
             _unitOfWork.GetRepository<Account>().UpdateAsync(updateAccount);
             bool isSuccessful = await _unitOfWork.CommitAsync() > 0;
             return isSuccessful;
@@ -99,7 +99,7 @@ namespace StudyRoomRental.API.Services.Implements
                 predicate: x => x.Id.Equals(id));
             if (account == null) throw new BadHttpRequestException(MessageConstant.Account.AccountNotFoundMessage);
 
-            account.Status = AccountStatus.Deactive.GetDescriptionFromEnum();
+            account.Status = AccountStatus.Deactivate.GetDescriptionFromEnum();
 
             _unitOfWork.GetRepository<Account>().UpdateAsync(account);
             bool isSuccessfull = await _unitOfWork.CommitAsync() > 0;

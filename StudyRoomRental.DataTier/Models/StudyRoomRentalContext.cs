@@ -23,7 +23,6 @@ namespace StudyRoomRental.DataTier.Models
         public virtual DbSet<Payment> Payments { get; set; } = null!;
         public virtual DbSet<Room> Rooms { get; set; } = null!;
         public virtual DbSet<RoomSchedule> RoomSchedules { get; set; } = null!;
-        public virtual DbSet<RoomType> RoomTypes { get; set; } = null!;
         public virtual DbSet<Transaction> Transactions { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -84,12 +83,14 @@ namespace StudyRoomRental.DataTier.Models
                     .WithMany(p => p.Feedbacks)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Feedback__OrderI__29572725");
+                    .HasConstraintName("FK_Feedback_Order");
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Order");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
 
@@ -108,15 +109,15 @@ namespace StudyRoomRental.DataTier.Models
             {
                 entity.ToTable("OrderItem");
 
-                entity.Property(e => e.EndedTime).HasColumnType("datetime");
+                entity.Property(e => e.EndTime).HasColumnType("datetime");
 
-                entity.Property(e => e.StartedTime).HasColumnType("datetime");
+                entity.Property(e => e.StartTime).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderItem__Order__32E0915F");
+                    .HasConstraintName("FK_OrderItem_Order");
 
                 entity.HasOne(d => d.Room)
                     .WithMany(p => p.OrderItems)
@@ -143,7 +144,7 @@ namespace StudyRoomRental.DataTier.Models
                     .WithMany(p => p.Payments)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Payment__OrderId__398D8EEE");
+                    .HasConstraintName("FK_Payment_Order");
             });
 
             modelBuilder.Entity<Room>(entity =>
@@ -151,6 +152,8 @@ namespace StudyRoomRental.DataTier.Models
                 entity.ToTable("Room");
 
                 entity.Property(e => e.Address).HasMaxLength(50);
+
+                entity.Property(e => e.Area).HasMaxLength(50);
 
                 entity.Property(e => e.Description).HasMaxLength(255);
 
@@ -169,12 +172,6 @@ namespace StudyRoomRental.DataTier.Models
                     .HasForeignKey(d => d.AccountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Room__UserId__2F10007B");
-
-                entity.HasOne(d => d.RoomType)
-                    .WithMany(p => p.Rooms)
-                    .HasForeignKey(d => d.RoomTypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Room__TypeId__300424B4");
             });
 
             modelBuilder.Entity<RoomSchedule>(entity =>
@@ -196,17 +193,6 @@ namespace StudyRoomRental.DataTier.Models
                     .HasForeignKey(d => d.RoomId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__RoomSched__RoomI__36B12243");
-            });
-
-            modelBuilder.Entity<RoomType>(entity =>
-            {
-                entity.ToTable("RoomType");
-
-                entity.Property(e => e.Area).HasMaxLength(50);
-
-                entity.Property(e => e.Description).HasMaxLength(255);
-
-                entity.Property(e => e.Name).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Transaction>(entity =>

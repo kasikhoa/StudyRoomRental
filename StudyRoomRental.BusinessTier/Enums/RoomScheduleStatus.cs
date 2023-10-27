@@ -8,6 +8,7 @@ namespace StudyRoomRental.BusinessTier.Enums
 {
     public enum RoomScheduleStatus
     {
+        Pending,
         Booking, 
         InUse,
         Completed,
