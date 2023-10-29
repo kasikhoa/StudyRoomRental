@@ -53,6 +53,9 @@ namespace StudyRoomRental.API.Services.Implements
             {
                 Email = request.Email,
                 Password = PasswordUtil.HashPassword(request.Password),
+                Phone = request.Phone,
+                DateOfBirth = request.DateOfBirth,
+                Gender = request.Gender.GetDescriptionFromEnum(),
                 Role = request.Role.GetDescriptionFromEnum(),
                 Status = AccountStatus.Activate.GetDescriptionFromEnum(),
             };
@@ -60,7 +63,7 @@ namespace StudyRoomRental.API.Services.Implements
             await _unitOfWork.GetRepository<Account>().InsertAsync(account);
             bool isSuccessful = await _unitOfWork.CommitAsync() > 0;
             if (!isSuccessful) throw new BadHttpRequestException(MessageConstant.Account.CreateAccountFailed);
-            return new GetAccountResponse(account.Id, account.Email, account.Password, EnumUtil.ParseEnum<RoleEnum>(account.Role), EnumUtil.ParseEnum<AccountStatus>(account.Status));
+            return new GetAccountResponse(account.Id, account.Email, account.Password, account.Phone, account.DateOfBirth, EnumUtil.ParseEnum<GenderEnum>(account.Gender), EnumUtil.ParseEnum<RoleEnum>(account.Role), EnumUtil.ParseEnum<AccountStatus>(account.Status));
         }
 
         public async Task<bool> UpdateAccountInformation(int id, UpdateAccountRequest updateAccountRequest)
@@ -87,7 +90,7 @@ namespace StudyRoomRental.API.Services.Implements
             Account account = await _unitOfWork.GetRepository<Account>()
                 .SingleOrDefaultAsync(predicate: x => x.Id.Equals(id));
             if (account == null) throw new BadHttpRequestException(MessageConstant.Account.AccountNotFoundMessage);
-            return new GetAccountResponse(account.Id, account.Email, account.Password,
+            return new GetAccountResponse(account.Id, account.Email, account.Password, account.Phone, account.DateOfBirth, EnumUtil.ParseEnum<GenderEnum>(account.Gender),
                 EnumUtil.ParseEnum<RoleEnum>(account.Role), EnumUtil.ParseEnum<AccountStatus>(account.Status));
         }
 
@@ -127,7 +130,7 @@ namespace StudyRoomRental.API.Services.Implements
             size = (size == 0) ? 10 : size;
 
             IPaginate<GetAccountResponse> accounts = await _unitOfWork.GetRepository<Account>().GetPagingListAsync(
-                selector: x => new GetAccountResponse(x.Id, x.Email, x.Password, EnumUtil.ParseEnum<RoleEnum>(x.Role), EnumUtil.ParseEnum<AccountStatus>(x.Status)),
+                selector: x => new GetAccountResponse(x.Id, x.Email, x.Password, x.Phone, x.DateOfBirth, EnumUtil.ParseEnum<GenderEnum>(x.Gender), EnumUtil.ParseEnum<RoleEnum>(x.Role), EnumUtil.ParseEnum<AccountStatus>(x.Status)),
                 predicate: BuildGetAccountsQuery(searchEmail, role, status),
                 orderBy: x => x.OrderBy(x => x.Id),
                 page: page,
