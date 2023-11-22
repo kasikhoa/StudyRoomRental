@@ -88,15 +88,15 @@ namespace StudyRoomRental.API.Services.Implements
 
             if (minPrice.HasValue)
             {
-                filterQuery = filterQuery.AndAlso(x => x.CostPrice >= minPrice.Value);
+                filterQuery = filterQuery.AndAlso(x => x.CostPrice >= minPrice);
             }
             if (maxPrice.HasValue)
             {
-                filterQuery = filterQuery.AndAlso(x => x.CostPrice <= maxPrice.Value);
+                filterQuery = filterQuery.AndAlso(x => x.CostPrice <= maxPrice);
             }
             if (minCapacity.HasValue)
             {
-                filterQuery = filterQuery.AndAlso(x => x.Capacity >= minCapacity.Value);
+                filterQuery = filterQuery.AndAlso(x => x.Capacity >= minCapacity);
             }
 
             return filterQuery;
